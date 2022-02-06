@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% block script %}
+{% endblock %}
+{% block body %}
+
+	<div id="debtoradder">
+		<form action="/" method="Post">
+			<h3 class="form_title" align="center"> <b> Add a debtor </b> </h3>
+			
+			<label> Debtor name </label>
+			<input type="text" name="nm" class="textfield" placeholder="Enter the name" autocomplete="off" required> </input>
+			
+			<center>
+				<input type="submit" class="adddebtorbtn" name="adddebtor" value="Add this debtor"> </input>
+			</center>
+			<p class="info" align="center" > Enter the name of the person who's have a debt on your store. </p>
+		</form>
+	</div>
+	
+	<div id="debtorediter">
+		<form action="/" method="Post">
+			<h3 class="form_title" align="center"> <b> Edit debtor </b> </h3>
+			
+			<input type="hidden" name="debtor_id" id="debtor_id"> </input>
+			
+			<label class="label"> Debtor name </label>
+			<input type="text" name="new_nm" id="new_nm" class="textfield" placeholder="Enter the name" autocomplete="off" required> </input> 
+			<div style="width: 97.9vw; padding: 1px;">
+				<input type="submit" class="adddebtorbtn" value="Delete" name="delete_debtor" id="delete_debtor" > </input>
+				<input type="submit" class="adddebtorbtn" value="Save" name="save_debtor" id="save_debtor" > </input>
+			</div>
+			<p class="info" align="center" > !!! Tap save to save changes or tap delete if this debtor has no debts to pay. !!!</p>
+		</form>
+	</div>
+	
+	<center> 
+		<h4 class="title"> {{ ctx.debtorTitle }} </h4>
+	</center>
+	<div class="debtorsborder bordercolor">
+		{% for debtor in ctx.debtors %}
+			<div class="debtorbtn" id="{{ debtor.id }}" onclick="showlist('{{ debtor.id }}')" ontouchstart="start_longpress('{{ debtor.id }}')" ontouchend="stop_longpress()">
+				<p> {{ debtor.name }} </p>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

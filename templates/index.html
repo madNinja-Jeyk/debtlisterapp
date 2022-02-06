@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Lister App </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/styles.css')}}" />
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/all.min.css')}}" />
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/fontawesome.min.css')}}" />
+	
+	{% block script %}
+	{% endblock %}
+</head>
+<body>
+	<div id="nav_bar">
+		<i class="fas fa-home" id="home"></i>
+		
+		<div  class="options" >
+			<i id="edit" class="fas fa-pencil-alt"></i>
+			<i id="add" class="fas fa-plus"></i>
+		</div>
+	</div>
+	<div class="nav_bar_border"> </div>
+	{% block body%}
+	{% endblock %}
+	
+	<div class="wrapper" id="flash" >
+	{% with messages = get_flashed_messages() %}
+		{% if messages%}
+			{% for msg in messages%}
+			
+				<div class="flash_msg">
+					<p style="text-align: center;" > {{ msg }} </p>
+				</div>
+			
+			{% endfor%}
+		{% endif %}
+	{% endwith %}
+	</div>
+	<script defer src="{{ url_for('static', filename='js/main.js') }}" > </script>
+
+</body>
+</html>

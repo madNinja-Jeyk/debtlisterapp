@@ -1,0 +1,125 @@
+{% extends "index.html" %}
+{% block script %}
+	<script defer src="{{ url_for('static', filename='js/validate_debt.js') }}" > </script>
+	
+{% endblock %}
+{% block body %}
+	<div id="debtadder" >
+		<form action="#" method="Post" id="form">
+			<h3 class="form_title" align="center"> <b> Add a debt </b> </h3>
+			<table class="table">
+				<tr>
+					<td> <label> Item name </label> </td>
+				</tr>
+				<tr>
+					<td colspan="2"> <input type="text" id="item" name="item" class="textfield" placeholder="Item name" autocomplete="Off" required> </input> </td>
+				</tr>
+				<tr>
+					<td> <label> Price </label> </td>
+					<td> <label> Quantity </label> </td>
+				 </tr>
+				<tr>
+					<td><input type="number" id="price" name="price" class="numfield" placeholder="Item price" required> </input> </td>
+					<td><input type="number" id="qtt" name="qty" class="numfield" placeholder="Item quantity" required> </input> </td>
+				</tr>
+			</table>
+			<center>
+				<input type="submit" class="adddebtorbtn" value="Add on list" name="adddebt" > </input>
+			</center>
+		</form>
+	</div>
+	
+	<div id="debtediter" >
+		<form action="#" method="Post" id="form">
+			<h3 class="form_title" align="center"> <b> Edit this debt </b> </h3>
+			<input type="hidden" name="debt_id" id="debt_id"> </input>
+			
+			<table class="table">
+				<tr>
+					<td> <label> Item name </label> </td>
+				</tr>
+				<tr>
+					<td colspan="2"> <input type="text" id="edit_item" name="new_item" class="textfield" placeholder="Item name" autocomplete="Off" required> </input> </td>
+				</tr>
+				<tr>
+					<td> <label> Price </label> </td>
+					<td> <label> Quantity </label> </td>
+				</tr>
+				<tr>
+					<td> <input type="number" id="edit_price" name="new_price" class="numfield" placeholder="Item price" required> </input> </td>
+					<td> <input type="number" id="edit_qtt" name="new_qty" class="numfield" placeholder="Item quantity" required> </input> </td> 
+				</tr>
+				<tr>
+					<td> <input type="submit" style="width: 100%" class="adddebtorbtn" value="Delete this item" name="delete_debt"> </input> </td>
+					<td> <input type="submit" style="width: 100%" class="adddebtorbtn" value="Save changes" name="save_debt"> </input> </td> 
+				</tr>
+				
+			</table>
+
+				
+				
+
+		</form>
+	</div>
+	<!-- 
+	<label for="showlist" class="debtor" > {{ ctx.debtor.name }}'s debts </label>
+	<input type="checkbox" id="showlist"> </input>
+	
+	<div class="debtpart bordercolor" style="border-top: none;">
+	
+	<div class="debtpart bordercolor" >
+	
+	<div class="debtpart bordercolor" style="border-top: none; border-radius: 0px 0px 3px 3px;">
+	
+	<p class="info"> Tap this to show/hide the list. </p>
+	
+	-->
+	<div class="debtor">
+		<b> {{  ctx.debtor.name }}'s debts </b>
+	</div>
+	
+	<div class="list">
+	<div class="debt" style="border-top: none; border-bottom: 1px dashed grey; padding: 3px;">
+		<div class="debtqty">
+			<p> <b> Qty </b>  </p>
+		</div>
+		<div class="debtname">
+			<p> <b> Name </b> </p>
+		</div>
+		<div class="debtpr" >
+			<p> <b> Price </b>  </p>
+		</div>
+	</div>
+	
+	{% for debt in ctx.debts%}
+		<div class="debt " id="{{ debt.id }}" ontouchstart="start_longpress('{{ debt.id }}')" ontouchend="stop_longpress()">
+			<div class="debtqty">
+				<p> {{ debt.quantity }} </p>
+			</div>
+			<div class="debtname">
+				<p>  {{ debt.itemName }} </p>
+			</div>
+			<div class="debtpr">
+				<p> ₱ {{ debt.price }}</p>
+			</div>
+			<div class="debttpr">
+				<p> <b> ₱ {{ debt.total }} </b> </p>
+			</div>
+		</div>
+	{% endfor %}
+	
+
+	<div class="debt" style="border-bottom: none;">
+		<div class="debtname">
+			<p> <b> Total Amount </b> </p>
+		</div>
+		<div class="debtqty">
+			<p>  </p>
+		</div>
+		<div class="debtpr">
+			<p> <b> ₱ {{ ctx.debtor.total_amount }} </b>  </p>
+		</div>
+	</div>
+	
+	</div>
+{% endblock %}
