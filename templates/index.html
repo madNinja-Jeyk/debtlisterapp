@@ -8,8 +8,6 @@
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/all.min.css')}}" />
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/fontawesome.min.css')}}" />
 	
-	{% block script %}
-	{% endblock %}
 </head>
 <body>
 	<div id="nav_bar">
@@ -24,19 +22,25 @@
 	{% block body%}
 	{% endblock %}
 	
-	<div class="wrapper" id="flash" >
+	
 	{% with messages = get_flashed_messages() %}
 		{% if messages%}
 			{% for msg in messages%}
-			
+			<script type="text/javascript">
+				setTimeout(function () {
+					document.getElementById('flash').style.display = "none";
+				}, 3000);
+			</script>
+			<div class="wrapper" id="flash" >
 				<div class="flash_msg">
 					<p style="text-align: center;" > {{ msg }} </p>
 				</div>
-			
+			</div>
 			{% endfor%}
 		{% endif %}
 	{% endwith %}
-	</div>
+	
+	<p class="note"> Note! Long press an item to edit it.</p>
 	<script defer src="{{ url_for('static', filename='js/main.js') }}" > </script>
 
 </body>

@@ -26,6 +26,10 @@ class Debt(db.Model):
 	def __repr__(self):
 		return f"{self.debtor_id} ({self.itemName} {self.quantity} {self.price})"
 
+@app.errorhandler(404)
+def not_found(e):
+	return render_template("404.html")
+
 @app.route('/',methods=['POST','GET'])
 def home():
 	if request.method == "POST":
@@ -40,7 +44,8 @@ def home():
 					flash("Debtor added ")
 					return redirect('/')
 				except:
-					return "Error"
+					flash("Debtor can't add ")
+					return redirect('/')
 		except:
 			try:
 				if request.form['save_debtor']:
@@ -51,7 +56,8 @@ def home():
 					debtor = Debtor.query.filter_by(id=id).first()
 					debtor.name = new_nm
 					db.session.commit()
-						
+					
+					flash("Debtor saved")
 					return redirect('/')
 			except:
 				if request.form['delete_debtor']:
@@ -62,10 +68,15 @@ def home():
 						db.session.delete(Debt.query.filter_by(id=debt.id).first())
 					db.session.delete(debtor)
 					db.session.commit()
+					
+					flash("Debtor deleted")
 					return redirect('/')
 	else:
-		debtors = Debtor.query.order_by(Debtor.date_added)
-		debtorTitle = "My Debtors"
+		debtors = Debtor.query.order_by(Debtor.date_added).all()
+		if len(debtors) == 0:
+			debtorTitle = "No debtor yet"
+		else:
+			debtorTitle = "My Debtor/s"
 		context = {
 			'debtors': debtors,
 			'debtorTitle': debtorTitle
@@ -74,10 +85,6 @@ def home():
 
 @app.route('/list/<debtor_id>',methods=['POST','GET'])
 def list(debtor_id):
-	try:
-		debtor = Debtor.query.filter_by(id=debtor_id).first()
-	except:
-		return "Debtor not found"
 	if request.method == 'POST':
 		try: #try adding a debt
 			if request.form['adddebt']:
@@ -137,10 +144,15 @@ def list(debtor_id):
 						flash("Cannot delete this debt")
 						return redirect(f'/list/{debtor.id}')
 	else:
-		context = {
-			'debtor': debtor,
-			'debts': debtor.debts
-		}
-		return render_template("list.html", ctx=context)
+		debtor = Debtor.query.filter_by(id=debtor_id).first()
+		if debtor != None:
+			context = {
+				'debtor': debtor,
+				'debts': debtor.debts
+			}
+			return render_template("list.html", ctx=context)
+		else:
+			return render_template("404.html")
+
 if __name__ == "__main__":
 	app.run(debug=True)

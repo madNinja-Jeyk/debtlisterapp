@@ -40,11 +40,9 @@ function showlist(id) {
 	}
 }
 
-//alert(window.location.href == "http://127.0.0.1:5000/");
 home.onclick = function () {
 	window.location.href = home_route;
 }
-
 
 add.onclick = function () {
 	if(isEdit) {
@@ -83,6 +81,7 @@ add.onclick = function () {
 	}
 }
 
+edit.style.display = "none";
 edit.onclick = function () {
 	if(window.location.href != home_route) {
 		if(nav_bar.className == "add") {
@@ -125,14 +124,4 @@ edit.onclick = function () {
 		}
 	}
 }
-edit.style.display = "none";
-/*
-edit.onclick = function() {
-	if(isEdit) {
-		isEdit = false;
-		edit.style.color = "white";
-	} else {
-		isEdit = true;
-		edit.style.color = focuscolor;
-	}
-} */
+

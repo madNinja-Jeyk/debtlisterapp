@@ -234,7 +234,8 @@ label {
 }
 .flash_msg {
 	border: 1px solid transparent;
-	background: rgb(190,190,210);
+	background: #333333;
+	color: white;
 	line-height: 10px;
 	width: 60%;
 	margin-left: auto;
@@ -246,4 +247,8 @@ label {
 	font-size: 12px;
 	color: white;
 }
-
+.note {
+	font-size: 12px;
+	color: grey;
+	text-align: center;
+}
