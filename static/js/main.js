@@ -25,7 +25,7 @@ function start_longpress(id) {
 			add.style.transform = "rotate(45deg)";
 		}
 		
-		,1000);
+		,100);
 	}
 }
 
@@ -99,10 +99,10 @@ edit.onclick = function () {
 			var edit_qtt = document.getElementById("edit_qtt");
 			
 			debt_id.value = selectedItem.id;
-			edit_qtt.value = selectedItem.childNodes[1].innerText;
-			edit_item.value = selectedItem.childNodes[3].innerText;
-			edit_price.value = selectedItem.childNodes[5].innerText.split(" ")[1];
+			edit_qtt.value = selectedItem.childNodes[3].innerText;
+			edit_item.value = selectedItem.childNodes[1].innerText;
 			
+			edit_price.value = selectedItem.childNodes[5].innerText;
 		}
 	} else if(window.location.href == home_route) {
 		if(nav_bar.className == "add") {

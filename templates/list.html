@@ -29,7 +29,6 @@
 		<form action="#" method="Post" id="form">
 			<h3 class="form_title" align="center"> <b> Edit this debt </b> </h3>
 			<input type="hidden" name="debt_id" id="debt_id"> </input>
-			
 			<table class="table">
 				<tr>
 					<td> <label> Item name </label> </td>
@@ -48,74 +47,46 @@
 				<tr>
 					<td> <input type="submit" style="width: 100%" class="adddebtorbtn" value="Delete this item" name="delete_debt"> </input> </td>
 					<td> <input type="submit" style="width: 100%" class="adddebtorbtn" value="Save changes" name="save_debt"> </input> </td> 
-				</tr>
-				
+				</tr>	
 			</table>
-
-				
-				
-
 		</form>
 	</div>
-	<!-- 
-	<label for="showlist" class="debtor" > {{ ctx.debtor.name }}'s debts </label>
-	<input type="checkbox" id="showlist"> </input>
 	
-	<div class="debtpart bordercolor" style="border-top: none;">
-	
-	<div class="debtpart bordercolor" >
-	
-	<div class="debtpart bordercolor" style="border-top: none; border-radius: 0px 0px 3px 3px;">
-	
-	<p class="info"> Tap this to show/hide the list. </p>
-	
-	-->
-	<div class="debtor">
-		<b> {{  ctx.debtor.name }}'s debts </b>
-	</div>
-	
-	<div class="list">
-	<div class="debt" style="border-top: none; border-bottom: 1px dashed grey; padding: 3px;">
-		<div class="debtqty">
-			<p> <b> Qty </b>  </p>
+	{% if ctx.debts_len != 0%}
+		<h3 class="debtor"> {{ ctx.debtor.name }}'s debts </h3>
+		<div style="width: 100%; border-radius: 5px; background: rgb(230,230,230);">
+			<table class="debt2">
+				<thead>
+					<tr>
+						<td align="center" > Name </td>
+						<td align="center"> QTY </td>
+						<td align="center"> Price </td>
+						<td align="right"> Total </td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for debt in ctx.debts %}
+					<tr id="{{ debt.id }}" ontouchstart="start_longpress('{{ debt.id }}')" ontouchend="stop_longpress()">
+						<td> {{ debt.itemName }} </td>
+						<td align="center"> {{ debt.quantity }} </td>
+						<td align="center"> {{ debt.price }} </td>
+						<td align="right"> <b> {{ debt.total }} </b> </td>
+					</tr>
+					{% endfor%}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="2" align="right"> <b> Total Amount </b> </td>
+						<td colspan="2" align="right"> <b> {{ ctx.debtor.total_amount }} </b> </td>
+					</tr>
+				</tfoot>
+			</table>
 		</div>
-		<div class="debtname">
-			<p> <b> Name </b> </p>
-		</div>
-		<div class="debtpr" >
-			<p> <b> Price </b>  </p>
-		</div>
-	</div>
+		
+		<p class="note"> Note! Long press an item to edit it.</p>
 	
-	{% for debt in ctx.debts%}
-		<div class="debt " id="{{ debt.id }}" ontouchstart="start_longpress('{{ debt.id }}')" ontouchend="stop_longpress()">
-			<div class="debtqty">
-				<p> {{ debt.quantity }} </p>
-			</div>
-			<div class="debtname">
-				<p>  {{ debt.itemName }} </p>
-			</div>
-			<div class="debtpr">
-				<p> ₱ {{ debt.price }}</p>
-			</div>
-			<div class="debttpr">
-				<p> <b> ₱ {{ debt.total }} </b> </p>
-			</div>
-		</div>
-	{% endfor %}
+	{% else %}
+		<h3 style="position: absolute; top: 45%; color: grey; text-align:center;"> {{ ctx.debtor.name }} has no debt/s yet. Click the plus icon to add one. </h3>
+	{%endif%}
 	
-
-	<div class="debt" style="border-bottom: none;">
-		<div class="debtname">
-			<p> <b> Total Amount </b> </p>
-		</div>
-		<div class="debtqty">
-			<p>  </p>
-		</div>
-		<div class="debtpr">
-			<p> <b> ₱ {{ ctx.debtor.total_amount }} </b>  </p>
-		</div>
-	</div>
-	
-	</div>
 {% endblock %}

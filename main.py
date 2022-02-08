@@ -85,6 +85,8 @@ def home():
 
 @app.route('/list/<debtor_id>',methods=['POST','GET'])
 def list(debtor_id):
+	debtor = Debtor.query.filter_by(id=debtor_id).first()
+	
 	if request.method == 'POST':
 		try: #try adding a debt
 			if request.form['adddebt']:
@@ -144,11 +146,11 @@ def list(debtor_id):
 						flash("Cannot delete this debt")
 						return redirect(f'/list/{debtor.id}')
 	else:
-		debtor = Debtor.query.filter_by(id=debtor_id).first()
 		if debtor != None:
 			context = {
 				'debtor': debtor,
-				'debts': debtor.debts
+				'debts': debtor.debts,
+				'debts_len': len(debtor.debts)
 			}
 			return render_template("list.html", ctx=context)
 		else:

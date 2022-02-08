@@ -167,65 +167,35 @@ label {
 }
 .debtor {
 	text-align: center;
-	margin-top: 20px;
+	margin-top: 10px;
 	margin-bottom: 0px;
 	padding: 3px;
-	border: 1px solid #0082e6;
-	border-radius: 3px 3px 0px 0px;
 	display: block;
 	line-height: 25px;
 }
-.list {
-	border: 0.5px solid grey;
-	border-radius: 0px 0px 3px 3px;
-}
-.debt {
-	margin-top: -5px;
+
+.debt2 {
+	border-collapse: collapse;
 	width: 100%;
-	line-height: 10px;
-	border-bottom: 0.5px solid grey;
-	display: inline-block;
 }
-.debtname {
-	width: 60%;
-	height: 28px;
-	display: flex;
-	justify-content: left;
-	align-items: center;
-	padding-left: 3px;
-	float:left;
+.debt2 thead tr {
+	border-bottom: 1px dashed grey;
 }
-.debtname p, .debtqty p, .debtpr p, .debttpr p{
-	font-size: 13px;
+.debt2 tfoot tr {
+	border-top: 1px dashed grey;
 }
-.debtqty {
-	width: 13%;
-	height: 28px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-left: 3px;
-	float: left;
+.debt2 thead tr td {
+	font-size: 16px;
+	font-style: bold;
+	letter-spacing: 1px;
+	color: black;
+	padding: 4px;
 }
-.debtpr {
-	width: 22%;
-	height: 28px;
-	display: flex;
-	justify-content: right;
-	align-items: center;
-	padding-right: 3px;
-	float: left;
+.debt2 tbody tr td {
+	font-size: 14px;
 }
-.debttpr {
-	width: 18%;
-	height: 28px;
-	display: flex;
-	justify-content: right;
-	align-items: center;
-	padding-right: 3px;
-	float: right;
-	margin-top: -15px;
-	margin-right: 17.5px;
+.debt2 tfoot tr td {
+	font-size: 16px;
 }
 .wrapper {
 	position: fixed;
