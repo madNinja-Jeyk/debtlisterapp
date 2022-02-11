@@ -11,8 +11,8 @@
 					<td colspan="2"> <input type="text" id="item" name="item" class="textfield" placeholder="Item name" autocomplete="Off" required> </input> </td>
 				</tr>
 				<tr>
-					<td> <label> Price </label> </td>
-					<td> <label> Quantity </label> </td>
+					<td align="center"> <label> Price </label> </td>
+					<td align="center"> <label> Quantity </label> </td>
 				 </tr>
 				<tr>
 					<td><input type="number" id="price" name="price" class="numfield" placeholder="Item price" required> </input> </td>
@@ -37,8 +37,8 @@
 					<td colspan="2"> <input type="text" id="edit_item" name="new_item" class="textfield" placeholder="Item name" autocomplete="Off" required> </input> </td>
 				</tr>
 				<tr>
-					<td> <label> Price </label> </td>
-					<td> <label> Quantity </label> </td>
+					<td align="center"> <label> Price </label> </td>
+					<td align="center"> <label> Quantity </label> </td>
 				</tr>
 				<tr>
 					<td> <input type="number" id="edit_price" name="new_price" class="numfield" placeholder="Item price" required> </input> </td>
@@ -83,10 +83,10 @@
 			</table>
 		</div>
 		
-		<p class="note"> Note! Long press an item to edit it.</p>
+		<p class="note"> Note! Long-press an item to edit it.</p>
 	
 	{% else %}
-		<h3 style="position: absolute; top: 45%; color: grey; text-align:center;"> {{ ctx.debtor.name }} has no debt/s yet. Click the plus icon to add one. </h3>
+		<h3 style="color: grey; text-align:center;"> {{ ctx.debtor.name }} has no debt/s yet. Click the plus icon to add one. </h3>
 	{%endif%}
 	
 {% endblock %}

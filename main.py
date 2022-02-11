@@ -41,10 +41,10 @@ def home():
 				try:
 					db.session.add(debtor)
 					db.session.commit()
-					flash("Debtor added ")
+					flash("Creditor added ")
 					return redirect('/')
 				except:
-					flash("Debtor can't add ")
+					flash("Creditor can't add ")
 					return redirect('/')
 		except:
 			try:
@@ -57,7 +57,7 @@ def home():
 					debtor.name = new_nm
 					db.session.commit()
 					
-					flash("Debtor saved")
+					flash("Creditor saved")
 					return redirect('/')
 			except:
 				if request.form['delete_debtor']:
@@ -69,14 +69,14 @@ def home():
 					db.session.delete(debtor)
 					db.session.commit()
 					
-					flash("Debtor deleted")
+					flash("Creditor deleted")
 					return redirect('/')
 	else:
 		debtors = Debtor.query.order_by(Debtor.date_added).all()
 		if len(debtors) == 0:
-			debtorTitle = "No debtor yet"
+			debtorTitle = "No creditor yet"
 		else:
-			debtorTitle = "My Debtor/s"
+			debtorTitle = "Creditor/s"
 		context = {
 			'debtors': debtors,
 			'debtorTitle': debtorTitle

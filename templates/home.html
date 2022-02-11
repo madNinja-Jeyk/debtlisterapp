@@ -3,13 +3,13 @@
 
 	<div id="debtoradder">
 		<form action="/" method="Post">
-			<h3 class="form_title" align="center"> <b> Add a debtor </b> </h3>
+			<h3 class="form_title" align="center"> <b> Add a creditor </b> </h3>
 			
-			<label> Debtor name </label>
+			<label> Creditor's name </label>
 			<input type="text" name="nm" class="textfield" placeholder="Enter the name" autocomplete="off" required> </input>
 			
 			<center>
-				<input type="submit" class="adddebtorbtn" name="adddebtor" value="Add this debtor"> </input>
+				<input type="submit" class="adddebtorbtn" name="adddebtor" value="Add this creditor"> </input>
 			</center>
 			<p class="info" align="center" > Enter the name of the person who's have a debt on your store. </p>
 		</form>
@@ -17,11 +17,11 @@
 	
 	<div id="debtorediter">
 		<form action="/" method="Post">
-			<h3 class="form_title" align="center"> <b> Edit debtor </b> </h3>
+			<h3 class="form_title" align="center"> <b> Edit creditor </b> </h3>
 			
 			<input type="hidden" name="debtor_id" id="debtor_id"> </input>
 			
-			<label class="label"> Debtor name </label>
+			<label class="label"> Creditor name </label>
 			<input type="text" name="new_nm" id="new_nm" class="textfield" placeholder="Enter the name" autocomplete="off" required> </input> 
 			<div style="width: 97.9vw; padding: 1px;">
 				<input type="submit" class="adddebtorbtn" value="Delete" name="delete_debtor" id="delete_debtor" > </input>
@@ -42,6 +42,7 @@
 		{% endfor %}
 	</div>
 	
-	<p class="note"> Note! Long press an item to edit it.</p>
-
+	{% if ctx.debtorTitle == "Creditor/s" %}
+		<p class="note"> Note! Long-press an item to edit it.</p>
+	{% endif %} 
 {% endblock %}

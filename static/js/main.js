@@ -25,7 +25,7 @@ function start_longpress(id) {
 			add.style.transform = "rotate(45deg)";
 		}
 		
-		,100);
+		,1000);
 	}
 }
 
