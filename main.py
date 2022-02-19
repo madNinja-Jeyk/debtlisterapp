@@ -26,6 +26,8 @@ class Debt(db.Model):
 	def __repr__(self):
 		return f"{self.debtor_id} ({self.itemName} {self.quantity} {self.price})"
 
+def savetotxt(id):
+	pass
 @app.errorhandler(404)
 def not_found(e):
 	return render_template("404.html")
@@ -155,6 +157,16 @@ def list(debtor_id):
 			return render_template("list.html", ctx=context)
 		else:
 			return render_template("404.html")
+@app.route("/login")
+def login_page():
+	return render_template("login_page.html")
 
+@app.route("/signup")
+def signup_page():
+	return render_template("signup_page.html")
+
+@app.route("/aboutus")
+def about_us():
+	return render_template("about_us.html")
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=True,host="0.0.0.0", port="5000")

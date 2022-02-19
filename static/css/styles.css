@@ -51,28 +51,32 @@ body {
 	z-index: 5;
 	position: absolute;
 	top: -50%;
+	left: 0;
 	padding: 2px;
 }
 .table {
-	width: 99.5%;
+	width: 98.8vw;
 	border-collapse: collapse;
 }
 #debtediter {
 	z-index: 5;
 	position: absolute;
 	top: -50%;
+	left: 0;
 	padding: 2px;
 }
 #debtoradder {
 	z-index: 5;
 	position: absolute;
 	top: -50%;
+	left: 0;
 	padding: 2px;
 }
 #debtorediter {
 	z-index: 5;
 	position: absolute;
 	top: -50%;
+	left: 0;
 	padding: 2px;
 }
 .options {
@@ -82,19 +86,43 @@ body {
 	margin-top: 2px;
 	max-height: 45px;
 }
+#nav_drawer {
+	padding: 15px;
+	width: 100%;
+	position: absolute;
+	top: 45px;
+	z-index: 100;
+	background: white;
+	transition: 0.7s;
+}
+#nav_drawer div a{
+	font-size: 18px;
+	line-height: 30px;
+	display: block;
+	color: #0082e6;
+	border-bottom: 0.5px solid grey;
+}
+#nav_drawer div p{
+	font-size: 12px;
+	color: rgb(80,80,80);
+}
+#drawerBtn{
+	color: white;
+	font-size: 1.8em;
+	margin-top: 4.5px;
+	margin-left: 8px;
+}
 #home{
 	color: white;
 	font-size: 1.8em;
 	margin-top: 4.5px;
 	margin-left: 8px;
 }
-#home:hover {
-	background: grey;
-}
-#edit {
+#save_file {
 	color: white;
 	font-size: 1.8em;
 	margin-left: 8px;
+	display: none;
 }
 #add {
 	color: white;
@@ -113,7 +141,7 @@ body {
 	border: none;
 	box-sizing: border-box;
 	outline: none;
-	width: 97.6vw;
+	width: 98.8vw;
 	text-align: center;
 	background: #ecedf0;
 	border-radius: 3px;
@@ -227,4 +255,8 @@ label {
 	font-size: 12px;
 	color: grey;
 	text-align: center;
+}
+footer {
+	position: absolute;
+	bottom: 0;
 }

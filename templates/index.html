@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> Debt listing App </title>
+	<title> Debt listing App - {% block title %} {% endblock%}</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="See all of your creditors debts all in one place">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	
+	<meta name="author" content="Jake Anthony Lanon and Janna Reyn Mitra">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/styles.css')}}" />
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/all.min.css')}}" />
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/fontawesome.min.css')}}" />
@@ -13,10 +13,11 @@
 </head>
 <body>
 	<div id="nav_bar">
+		<i class="fa-solid fa-bars" id="drawerBtn"></i>
 		<i class="fas fa-home" id="home"></i>
 		
 		<div  class="options" >
-			<i id="edit" class="fas fa-pencil-alt"></i>
+			<i id="save_file" class="fa-solid fa-floppy-disk"></i>
 			<i id="add" class="fas fa-plus"></i>
 		</div>
 	</div>
@@ -43,7 +44,20 @@
 		{% endif %}
 	{% endwith %}
 	
-	
+	<div id="nav_drawer">
+		<div>
+			<p> <a href="{{ url_for('login_page') }}"> Login</a> to import your saved creditors. </p>
+		</div>
+		<div>
+			<p> <a href="{{ url_for('signup_page') }}"> Sign up</a> to save and secure your creditor's info.</p>
+		</div>
+		<div>
+			<p> <a href="{{ url_for('about_us') }}"> About us</a> to know about me and this app.</p>
+		</div>
+		<div>
+			<p> <a href="mailto:newjakelanon01@gmail.com"> Contact us</a> to contact us or to report a issue/s. </p>
+		</div>
+	</div>
 	<script defer src="{{ url_for('static', filename='js/main.js') }}" > </script>
 
 </body>
